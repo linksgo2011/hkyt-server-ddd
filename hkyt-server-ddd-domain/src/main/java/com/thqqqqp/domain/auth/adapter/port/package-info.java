@@ -1,0 +1,1 @@
+package com.thqqqqp.domain.auth.adapter.port;
