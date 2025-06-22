@@ -1,6 +1,6 @@
 use `hkyt-server-ddd`;
 
-INSERT INTO sys_role (name, code, status) VALUES
+INSERT INTO sys_role (name,code, status) VALUES
     ('超级管理员', 'admin', 1),
     ('导员', 'counselor', 1),
     ('学生', 'student', 1);
@@ -14,10 +14,10 @@ INSERT INTO sys_permission (name, code, type, url, method, status) VALUES
    ('个人信息查看', 'PROFILE_VIEW', 'api', '/api/profile', 'GET', 1),
    ('个人信息修改', 'PROFILE_EDIT', 'api', '/api/profile', 'PUT', 1);
 
-INSERT INTO sys_user (username, password, phone, email, student_no, user_type, status, register_type) VALUES
-    ('admin', 'admin123', '18888888888', 'admin@test.com', NULL, 'admin', 1, 'system'),
-    ('counselor001', 'counselor123', '18888888887', 'counselor@test.com', NULL, 'teacher', 1, 'system'),
-    ('student001', 'student123', '18888888886', 'student1@test.com', '2024011007', 'student', 1, 'system');
+INSERT INTO sys_user (username,nickname , password, phone, email, student_no, user_type, status, register_type) VALUES
+    ('admin', '超级管理员','admin123', '18888888888', 'admin@test.com', NULL, 'admin', 1, 'system'),
+    ('counselor001', '测试导员','counselor123', '18888888887', 'counselor@test.com', NULL, 'teacher', 1, 'system'),
+    ('student001','测试学生', 'student123', '18888888886', 'student1@test.com', '2024011007', 'student', 1, 'system');
 INSERT INTO sys_user_role (user_id, role_id)
 VALUES
     (1, 1), -- admin分配admin角色

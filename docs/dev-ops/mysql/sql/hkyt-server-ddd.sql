@@ -24,6 +24,7 @@ use `hkyt-server-ddd`;
 CREATE TABLE sys_user (
                           id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '主键ID',
                           username VARCHAR(50) NOT NULL UNIQUE COMMENT '用户名（支持手机号/邮箱/自定义账号等）',
+                          nickname VARCHAR(255) DEFAULT NULL COMMENT '昵称（可选）',
                           password VARCHAR(100) DEFAULT NULL COMMENT '密码（加密存储）',
                           phone VARCHAR(20) UNIQUE DEFAULT NULL COMMENT '手机号',
                           email VARCHAR(100) UNIQUE DEFAULT NULL COMMENT '邮箱',
