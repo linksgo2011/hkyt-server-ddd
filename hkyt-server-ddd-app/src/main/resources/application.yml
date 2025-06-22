@@ -1,0 +1,5 @@
+spring:
+  config:
+    name: hkyt-server-ddd-app
+  profiles:
+    active: dev
