@@ -2,6 +2,7 @@ package com.thqqqqp.domain.auth.model.entity;
 
 import com.thqqqqp.domain.auth.model.valobj.UserId;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -11,6 +12,7 @@ import java.util.*;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class User {
     private UserId id;
     private String username;
@@ -24,12 +26,12 @@ public class User {
     private String registerType;
     private String source;
     private String unionid;
-    private Set<UserRole> roles;
     private String createdBy;
     private LocalDateTime createdTime;
     private String updatedBy;
     private LocalDateTime updatedTime;
     private String remark;
+    private Set<UserRole> roles;
 
     private User(String username, String password, String userType) {
         this.username = Objects.requireNonNull(username, "用户名不能为空");

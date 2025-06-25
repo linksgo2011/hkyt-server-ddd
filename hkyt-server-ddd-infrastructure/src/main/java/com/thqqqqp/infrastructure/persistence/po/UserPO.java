@@ -28,11 +28,11 @@ public class UserPO {
     
     private String studentNo;
     
-    private Integer userType;
+    private String userType;
     
     private Integer status;
     
-    private Integer registerType;
+    private String registerType;
     
     private String source;
     
