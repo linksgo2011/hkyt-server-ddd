@@ -38,5 +38,5 @@ public interface PermissionRepository {
     /**
      * 删除权限
      */
-    void delete(Permission permission);
+    void delete(Long id);
 } 

@@ -32,8 +32,7 @@ public class PermissionRepositoryImpl implements PermissionRepository {
         } else {
             permissionMapper.updateById(po);
         }
-        // TODO 获取自增ID
-        return null;
+        return PermissionConverter.toEntity(po);
     }
 
     @Override
@@ -61,7 +60,7 @@ public class PermissionRepositoryImpl implements PermissionRepository {
     }
 
     @Override
-    public void delete(Permission permission) {
-        permissionMapper.deleteById(permission.getId().getValue());
+    public void delete(Long id) {
+        permissionMapper.deleteById(id);
     }
 }
