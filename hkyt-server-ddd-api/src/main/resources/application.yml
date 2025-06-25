@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: hkyt-server-ddd-api
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /v3/api-docs
+        name: Default
+  show-actuator: true
+  paths-to-match: /**
+  packages-to-scan: com.hkyt.server.ddd.api
+  default-produces-media-type: application/json
+  default-consumes-media-type: application/json
+  writer-with-default-pretty-printer: true

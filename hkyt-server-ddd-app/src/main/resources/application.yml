@@ -1,5 +1,10 @@
+server:
+  port: 8080
+
 spring:
   config:
     name: hkyt-server-ddd-app
   profiles:
     active: dev
+  application:
+    name: hkyt-server

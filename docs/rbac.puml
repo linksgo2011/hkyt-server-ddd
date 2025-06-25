@@ -1,0 +1,105 @@
+@startuml RBAC领域模型
+
+package "权限管理领域" {
+    class Permission <<Aggregate Root>> {
+        - id: PermissionId
+        - name: String
+        - code: String
+        - type: String
+        - url: String
+        - method: String
+        - parentId: Long
+        - status: Boolean
+        - createdBy: String
+        - createdTime: LocalDateTime
+        - updatedBy: String
+        - updatedTime: LocalDateTime
+        - remark: String
+        + create(name, code, type, url, method, parentId, remark): Permission
+    }
+
+    class Role <<Aggregate Root>> {
+        - id: RoleId
+        - name: String
+        - code: String
+        - status: Boolean
+        - permissions: Set<Permission>
+        - createdBy: String
+        - createdTime: LocalDateTime
+        - updatedBy: String
+        - updatedTime: LocalDateTime
+        - remark: String
+        + addPermission(permission): void
+        + removePermission(permission): void
+        + hasPermission(permission): boolean
+    }
+
+    class RolePermission <<Entity>> {
+        - roleId: Long
+        - permissionId: Long
+        - createdBy: String
+        - createdTime: LocalDateTime
+        - updatedBy: String
+        - updatedTime: LocalDateTime
+        - remark: String
+    }
+
+    class User <<Aggregate Root>> {
+        - id: UserId
+        - username: String
+        - password: String
+        - nickname: String
+        - phone: String
+        - email: String
+        - studentNo: String
+        - userType: String
+        - status: Boolean
+        - registerType: String
+        - source: String
+        - unionid: String
+        - roles: Set<Role>
+        - createdBy: String
+        - createdTime: LocalDateTime
+        - updatedBy: String
+        - updatedTime: LocalDateTime
+        - remark: String
+        + addRole(role): void
+        + removeRole(role): void
+        + hasRole(role): boolean
+    }
+
+    class UserRole <<Entity>> {
+        - userId: Long
+        - roleId: Long
+        - createdBy: String
+        - createdTime: LocalDateTime
+        - updatedBy: String
+        - updatedTime: LocalDateTime
+        - remark: String
+    }
+
+    class PermissionId <<Value Object>> {
+        - value: Long
+    }
+
+    class RoleId <<Value Object>> {
+        - value: Long
+    }
+
+    class UserId <<Value Object>> {
+        - value: Long
+    }
+
+    Role "1" *-- "*" Permission : contains >
+    Role "1" -- "*" RolePermission : manages >
+    Permission "1" -- "*" RolePermission : assigned to >
+    User "1" *-- "*" Role : has >
+    User "1" -- "*" UserRole : manages >
+    Role "1" -- "*" UserRole : assigned to >
+
+    Permission *-- PermissionId
+    Role *-- RoleId
+    User *-- UserId
+}
+
+@enduml
