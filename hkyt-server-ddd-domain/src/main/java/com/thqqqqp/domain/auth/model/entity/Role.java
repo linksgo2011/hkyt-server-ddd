@@ -16,12 +16,12 @@ public class Role {
     private String name;
     private String code;
     private Boolean status;
-    private Set<Permission> permissions;
     private String createdBy;
     private LocalDateTime createdTime;
     private String updatedBy;
     private LocalDateTime updatedTime;
     private String remark;
+    private Set<RolePermission> permissions;
 
     private Role(String name, String code) {
         this.name = Objects.requireNonNull(name, "角色名称不能为空");
@@ -36,23 +36,23 @@ public class Role {
         return role;
     }
 
-    public void addPermission(Permission permission) {
+    public void addPermission(RolePermission permission) {
         this.permissions.add(Objects.requireNonNull(permission, "权限不能为空"));
     }
 
-    public void addPermissions(Collection<Permission> permissionList) {
+    public void addPermissions(Collection<RolePermission> permissionList) {
         if (permissionList != null) {
-            for (Permission permission : permissionList) {
+            for (RolePermission permission : permissionList) {
                 addPermission(permission);
             }
         }
     }
 
-    public void removePermission(Permission permission) {
+    public void removePermission(RolePermission permission) {
         this.permissions.remove(Objects.requireNonNull(permission, "权限不能为空"));
     }
 
-    public boolean hasPermission(Permission permission) {
+    public boolean hasPermission(RolePermission permission) {
         return this.permissions.contains(Objects.requireNonNull(permission, "权限不能为空"));
     }
 

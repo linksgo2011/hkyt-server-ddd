@@ -24,7 +24,7 @@ public class User {
     private String registerType;
     private String source;
     private String unionid;
-    private Set<Role> roles;
+    private Set<UserRole> roles;
     private String createdBy;
     private LocalDateTime createdTime;
     private String updatedBy;
@@ -51,15 +51,15 @@ public class User {
         return user;
     }
 
-    public void addRole(Role role) {
+    public void addRole(UserRole role) {
         this.roles.add(Objects.requireNonNull(role, "角色不能为空"));
     }
 
-    public void removeRole(Role role) {
+    public void removeRole(UserRole role) {
         this.roles.remove(Objects.requireNonNull(role, "角色不能为空"));
     }
 
-    public boolean hasRole(Role role) {
+    public boolean hasRole(UserRole role) {
         return this.roles.contains(Objects.requireNonNull(role, "角色不能为空"));
     }
 
